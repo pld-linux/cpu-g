@@ -1,11 +1,12 @@
 Summary:	Shows some useful information about your hardware
 Name:		cpu-g
 Version:	0.9.0
-Release:	0.1
+Release:	1
 License:	GPL v3
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/cpug/%{name}-%{version}.tar.gz
 # Source0-md5:	51b35a75331dc1067c6ed79b4861d346
+Patch0:		%{name}-datadir.patch
 URL:		http://sourceforge.net/projects/cpug/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.586
@@ -17,9 +18,8 @@ hardware. It collects and displays information about your CPU, RAM,
 Motherboard, some general information about your system and more. 
 
 %prep
-%setup -q 
-
-%build
+%setup -q
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
